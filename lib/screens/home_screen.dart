@@ -1,4 +1,5 @@
-import 'package:earth_on_sky/screens/doctor_details.dart';
+
+import 'package:earth_on_sky/screens/success_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../models/doctor.dart';
