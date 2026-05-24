@@ -28,22 +28,22 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 90,
-      margin: EdgeInsets.only(right: 15),
+      width: 80,
+      margin: EdgeInsets.only(right: 12),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(15),
+            padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
               color: color.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(20),
             ),
-            child: Icon(icon, color: color, size: 28),
+            child: Icon(icon, color: color, size: 24),
           ),
-          SizedBox(height: 8),
+          SizedBox(height: 6),
           Text(
             name,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 11, fontWeight: FontWeight.w500),
             textAlign: TextAlign.center,
           ),
         ],

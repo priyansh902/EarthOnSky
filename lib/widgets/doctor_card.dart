@@ -1,56 +1,58 @@
-import 'package:earth_on_sky/models/doctor.dart';
 import 'package:flutter/material.dart';
- 
-/// DoctorCard is a reusable widget that displays a doctor's profile information in a card format. It includes the doctor's image, name, specialty, rating, and years of experience. The card is designed to be tappable, allowing users to navigate to a detailed view of the doctor when tapped. The widget uses a GestureDetector to handle tap events and a Hero widget for smooth image transitions between screens. This card can be used in a list of doctors on the home screen or in search results to provide users with an overview of each doctor before viewing more details.
-/// To use this widget, simply pass a Doctor object and an onTap callback function that defines the action to be taken when the card is tapped (e.g., navigating to a doctor detail screen). The design is clean and modern, making it suitable for a medical appointment app.
-/// Example usage:
-/// DoctorCard( 
-/// doctor: Doctor.sampleDoctors[0],
-/// onTap: () {
-/// // Navigate to doctor detail screen
-/// },
-/// );
+import '../models/doctor.dart';
 
 class DoctorCard extends StatelessWidget {
-
   final Doctor doctor;
   final VoidCallback onTap;
 
   const DoctorCard({
-    Key? key,
+    super.key,
     required this.doctor,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    // Get initials from name
+    String initials = doctor.name
+        .split(' ')
+        .map((n) => n[0])
+        .join('');
+
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.shade200,
-              blurRadius: 5,
-              offset: Offset(0, 5), // changes position of shadow
+              blurRadius: 10,
+              offset: const Offset(0, 3),
             ),
           ],
         ),
-       child: Row(
+        child: Row(
           children: [
-            // Doctor Image
+            // Doctor Avatar with Initials
             Hero(
               tag: doctor.id,
               child: CircleAvatar(
-                radius: 40,
-                backgroundImage: NetworkImage(doctor.imageUrl),
+                radius: 35,
+                backgroundColor: Colors.blue[100],
+                child: Text(
+                  initials,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blue[700],
+                  ),
+                ),
               ),
             ),
-            SizedBox(width: 15),
+            const SizedBox(width: 12),
             // Doctor Info
             Expanded(
               child: Column(
@@ -58,32 +60,44 @@ class DoctorCard extends StatelessWidget {
                 children: [
                   Text(
                     doctor.name,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 2),
                   Text(
                     doctor.specialty,
-                    style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                    style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 12,
+                    ),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 4),
                   Row(
                     children: [
-                      Icon(Icons.star, color: Colors.amber, size: 16),
-                      SizedBox(width: 4),
-                      Text('${doctor.rating}', style: TextStyle(fontWeight: FontWeight.bold)),
-                      SizedBox(width: 12),
-                      Icon(Icons.work, color: Colors.grey, size: 14),
-                      SizedBox(width: 4),
-                      Text('${doctor.experienceYears} years', style: TextStyle(color: Colors.grey[600])),
+                      const Icon(Icons.star, color: Colors.amber, size: 14),
+                      const SizedBox(width: 4),
+                      Text(
+                        '${doctor.rating}',
+                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(width: 8),
+                      const Icon(Icons.work, color: Colors.grey, size: 12),
+                      const SizedBox(width: 4),
+                      Text(
+                        '${doctor.experienceYears} yrs',
+                        style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                      ),
                     ],
                   ),
                 ],
               ),
             ),
-            Icon(Icons.chevron_right, color: Colors.grey[400]),
+            Icon(Icons.chevron_right, color: Colors.grey[400], size: 20),
           ],
         ),
-      )
+      ),
     );
   }
 }
