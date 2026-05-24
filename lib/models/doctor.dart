@@ -8,7 +8,7 @@ class Doctor {
   final String about;
   final List<String> availableTimes;
 
-
+  /// Constructor for the Doctor class
   Doctor({
     required this.id,
     required this.name,
@@ -19,7 +19,8 @@ class Doctor {
     required this.about,
     required this.availableTimes,
   });
-
+   
+   /// Sample data for testing and demonstration purposes
   static List<Doctor> sampleDoctors = [
     Doctor(
       id: '1',
@@ -53,4 +54,6 @@ class Doctor {
       ),
   ];
 }
-
+ /// The Doctor class represents a medical professional with various attributes such as name, specialty, rating, and available appointment times. It also includes a static list of sample doctors for testing and demonstration purposes.
+ /// You can add more attributes or methods to this class as needed, such as contact information, office location, or a method to check availability for a specific time slot.
+ /// This class can be used in a medical appointment app to display doctor profiles, allow users to book appointments, and manage doctor information.
