@@ -340,4 +340,8 @@ Thumbs.db
 # Logs
 *.log
 
+# git branches
+*.main
+*.medical-app-ui
+
 # happy to make this a Complete Project .
