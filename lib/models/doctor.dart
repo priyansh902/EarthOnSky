@@ -53,6 +53,10 @@ class Doctor {
         availableTimes: ['8:30 AM', '12:00 PM', '3:00 PM'],
       ),
   ];
+    /// Static method to retrieve the list of top doctors
+   static List<Doctor> getTopDoctors() {
+    return sampleDoctors;
+  }
 }
  /// The Doctor class represents a medical professional with various attributes such as name, specialty, rating, and available appointment times. It also includes a static list of sample doctors for testing and demonstration purposes.
  /// You can add more attributes or methods to this class as needed, such as contact information, office location, or a method to check availability for a specific time slot.
